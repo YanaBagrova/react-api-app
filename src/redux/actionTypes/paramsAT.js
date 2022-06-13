@@ -1,0 +1,5 @@
+export const paramsAT = {
+  INIT_PARAMS: 'INIT_PARAMS',
+  ADD_PARAMS: 'ADD_PARAMS'
+  // GET_CALLS_FETCH: 'GET_CALLS_FETCH',
+}
