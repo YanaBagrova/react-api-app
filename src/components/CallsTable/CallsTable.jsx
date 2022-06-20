@@ -74,7 +74,7 @@ function CallsTable(props) {
                 }}
               >
                 <TableCell sx={{ width: '46px', borderBottom: '0px !important' }}></TableCell>
-                <TableCell component="th" scope="row">{call.in_out === 1 ? <CallReceivedIcon sx={{ color: 'green', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} /> : <CallMadeIcon sx={{ color: 'blue', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} />}</TableCell>
+                <TableCell component="th" scope="row">{call.in_out === 1 ? <CallReceivedIcon sx={{ color: 'rgba(40, 168, 121, 1)', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} /> : <CallMadeIcon sx={{ color: 'rgba(0, 95, 248, 1)', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} />}</TableCell>
                 <TableCell align="right">{((new Date(call.date).getHours()).toString().length === 1) ? `0${new Date(call.date).getHours()}` : new Date(call.date).getHours()}:
                   {((new Date(call.date).getMinutes()).toString().length === 1) ? `0${new Date(call.date).getMinutes()}` : new Date(call.date).getMinutes()}</TableCell>
                 <TableCell align="right"><img className="cell1" alt="" src={`${call.person_avatar}`}></img></TableCell>
