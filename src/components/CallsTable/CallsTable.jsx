@@ -8,6 +8,7 @@ import CallReceivedIcon from '@mui/icons-material/CallReceived';
 import { getCallsFetchAC } from '../../redux/actionCreators/callsAC';
 import { paramsInitAC } from '../../redux/actionCreators/paramsAC';
 import DateComponent from '../DateComponent/DateComponent';
+import './CallsTable.css'
 
 function CallsTable(props) {
   const dispatch = useDispatch()
@@ -23,12 +24,28 @@ function CallsTable(props) {
 
   return (
     <>
-    <DateComponent />
+      <DateComponent />
       <TableContainer sx={{
-        width: '1400px',
+        marginTop: '42px',
+        width: '1440px',
+        heigth: '1985px',
         display: 'block',
         marginLeft: '15%',
-        marginTop: '2%',
+        boxShadow: '0px 4px 5px #E9EDF3',
+        borderRadius: '8px',
+        '& .MuiTableCell-root': {
+          textAlign: 'left',
+          padding: '0',
+          fontFamily: 'SF Pro Display',
+          fontWeight: '400',
+          fontSize: '15px',
+          lineHeight: '21px',
+          height: '65px',
+          borderBottom: '1px solid rgba(234, 240, 250, 1)'
+        },
+        '& .MuiTableRow-root': {
+          display: 'inline'
+        }
       }}
         component={Paper}>
         <NavigationMenu calls={calls} />
@@ -37,30 +54,34 @@ function CallsTable(props) {
         }}
           aria-label="simple table">
           <TableHead>
-            <TableRow>
-              <TableCell>Тип</TableCell>
-              <TableCell align="right">Время</TableCell>
-              <TableCell align="right">Сотрудник</TableCell>
-              <TableCell align="right">Звонок</TableCell>
-              <TableCell align="right">Источник</TableCell>
-              <TableCell align="right">Оценка</TableCell>
-              <TableCell align="right">Длительность</TableCell>
+            <TableRow sx={{ '& .MuiTableCell-root': { height: '50px', fontSize: '14px', color: 'rgba(137, 156, 177, 1)' } }}>
+              <TableCell sx={{ height: '61px !important', width: '40px', borderBottom: '0px !important' }}></TableCell>
+              <TableCell sx={{ height: '61px !important', width: '53px' }}>Тип</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '89px', textIndent: '0' }} align="right">Время</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '128px', textIndent: '0' }} align="right">Сотрудник</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '326px', textIndent: '0' }} align="right">Звонок</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '214px', textIndent: '0' }} align="right">Источник</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '461px', textIndent: '0' }} align="right">Оценка</TableCell>
+              <TableCell sx={{ height: '61px !important', width: '129px', textIndent: '0' }} align="right">Длительность</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {calls.length ? calls.map((call) => (
               <TableRow
                 key={uuidv4()}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                sx={{
+                  '&:last-child td, &:last-child th': { border: 0 },
+                }}
               >
-                <TableCell component="th" scope="row">{call.in_out === 1 ? <CallReceivedIcon sx={{ color: 'green' }} /> : <CallMadeIcon sx={{ color: 'blue' }} />}</TableCell>
-                <TableCell align="right">{((new Date(call.date).getHours()).toString().length === 1) ?`0${new Date(call.date).getHours()}` : new Date(call.date).getHours()}:
-                {((new Date(call.date).getMinutes()).toString().length === 1) ?`0${new Date(call.date).getMinutes()}` : new Date(call.date).getMinutes()}</TableCell>
-                <TableCell align="right"><img alt="" src={`${call.person_avatar}`}></img></TableCell>
-                <TableCell align="right">{call.from_number}</TableCell>
-                <TableCell align="right">{call.from_site}</TableCell>
-                <TableCell align="right">Оценка</TableCell>
-                <TableCell align="right">{(call.time / 60).toFixed(2)}</TableCell>
+                <TableCell sx={{ width: '46px', borderBottom: '0px !important' }}></TableCell>
+                <TableCell component="th" scope="row">{call.in_out === 1 ? <CallReceivedIcon sx={{ color: 'green', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} /> : <CallMadeIcon sx={{ color: 'blue', height: '12.52px', width: '12.52px', marginRight: '37.48px' }} />}</TableCell>
+                <TableCell align="right">{((new Date(call.date).getHours()).toString().length === 1) ? `0${new Date(call.date).getHours()}` : new Date(call.date).getHours()}:
+                  {((new Date(call.date).getMinutes()).toString().length === 1) ? `0${new Date(call.date).getMinutes()}` : new Date(call.date).getMinutes()}</TableCell>
+                <TableCell align="right"><img className="cell1" alt="" src={`${call.person_avatar}`}></img></TableCell>
+                <TableCell sx={{ width: '326px' }} align="right">+{call.from_number}</TableCell>
+                <TableCell sx={{ width: '214px' }}>{call.from_site}</TableCell>
+                <TableCell sx={{ width: '510px' }} align="right">Оценка</TableCell>
+                <TableCell sx={{ width: '78px' }} align="right">{(call.time / 60).toFixed(2)}</TableCell>
               </TableRow>
             )) : <TableRow><TableCell>no calls</TableCell></TableRow>}
           </TableBody>

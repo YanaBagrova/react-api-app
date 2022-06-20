@@ -42,7 +42,7 @@ function DateComponent(props) {
       const formatedDate = formatDate(date)
       return formatedDate
     }
-    
+
     const datesArr = ['today', 3, 7]
     const dates = datesArr.map((el) => getDate(el))
     setTodayDate(dates[0])
@@ -84,9 +84,9 @@ function DateComponent(props) {
     <>
       <MobileStepper
         sx={{
-          width: '170px',
-          marginLeft: '90%',
-          marginTop: '0',
+          width: '101.41px',
+          marginLeft: '1558.76px',
+          marginTop: '96px',
           bgcolor: 'transparent',
           color: 'transparent'
         }}
@@ -96,10 +96,10 @@ function DateComponent(props) {
         activeStep={activeStep}
         nextButton={
           <Button
-            size="small"
+            // size="small"
             onClick={handleNext}
             disabled={activeStep === steps - 1}
-            sx={{ color: 'gray' }}
+            sx={{ color: 'rgba(173, 191, 223, 1)', '& .MuiSvgIcon-root': { width: '14px', height: '15px' } }}
           >
             {theme.direction === 'rtl' ? (
               <ChevronLeftIcon />
@@ -109,26 +109,31 @@ function DateComponent(props) {
           </Button>
         }
         backButton={
-          <Button size="small"
+          <Button
+            // size="small"
             onClick={handleBack}
             disabled={activeStep === 0}
-            sx={{ color: 'gray' }}
+            sx={{ color: 'rgba(173, 191, 223, 1)', '& .MuiSvgIcon-root': { width: '14px', height: '15px' } }}
           >
             {theme.direction === 'rtl' ? (
               <ChevronRightIcon />
             ) : (
               <ChevronLeftIcon />
             )}
-            {<CalendarTodayIcon
+            {/* {<CalendarTodayIcon
               sx={{
-                width: '16px',
-                color: 'darkgray'
+                color: 'rgba(173, 191, 223, 1)'
               }}
-            />}
+            />} */}
           </Button>
         }
       />
-      <Box sx={{ marginLeft: '94%', marginTop: '-1.85%', color: 'coral', fontWeight: 900 }}>{dateFilter}</Box>
+      <Box sx={{
+        marginLeft: '83.7%', marginTop: '-2.35%', color: 'rgba(0, 95, 248, 1)', fontWeight: 900,
+        fontFamily: 'SF Pro Display', fontWeight: 400, fontSize: '14px', lineHeight: '16px',
+      }}>
+        <CalendarTodayIcon sx={{ color: 'rgba(173, 191, 223, 1)', width: '16px', height: '18px' }}
+        /><Box sx={{marginTop: '-20px', marginLeft: '20px'}}>{dateFilter}</Box></Box>
     </>
   );
 }

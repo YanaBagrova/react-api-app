@@ -51,22 +51,35 @@ function NavigationMenu(props) {
 
   return (
     <>
-      <AppBar position='static' sx={{ backgroundColor: 'aliceblue' }}>
+      <AppBar position='static' sx={{ backgroundColor: 'aliceblue', height: '61px', borderTopColor: 'aliceblue',
+      boxShadow: '0px 0px 0px', borderBottom: '1px solid rgba(234, 240, 250, 1)',
+      '& .MuiTypography-root, & .MuiInputLabel-root': {
+        fontSize: '14px',
+        fontFamily: 'SF Pro Display',
+        color: 'rgba(94, 119, 147, 1)'
+      },
+      '& .MuiSvgIcon-root': {
+        width: '14px',
+        height: '14px',
+        color: 'rgba(94, 119, 147, 1)'
+      },
+       }}>
         <Toolbar>
           <IconButton>
             <SearchIcon></SearchIcon>
           </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1, color: 'gray' }}>
+          <Typography variant='h6' component='div' sx={{ flexGrow: 1}}>
             Поиск по звонкам
           </Typography>
           <Stack direction='row' spacing={2}>
             {params && params.length && <Button
               onClick={clearFilters}
-              sx={{ marginTop: '17px', color: 'gray', fontSize: '12px', fontWeight: 600, marginLeft: '-15px' }}
-            >Сбросить фильтры X</Button>}
+              sx={{ marginTop: '10px', color: 'rgba(94, 119, 147, 1)', fontSize: '14px', fontFamily: 'SF Pro Display',
+            textTransform: 'none'}}
+            >Сбросить фильтры x</Button>}
             {calls.length && navBarItems.length ? navBarItems.map((navBarItem) => <SelectComponent
               navBarItem={navBarItem}
-              sx={{ color: 'gray' }}
+              sx={{ color: 'gray'}}
               key={uuidv4()}
             />) : 'no calls'}
           </Stack>
